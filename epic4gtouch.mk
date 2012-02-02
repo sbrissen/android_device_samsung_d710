@@ -34,19 +34,21 @@
 # and is used by people who have access to binary versions of the drivers
 # but not to the original vendor tree. Be sure to update both.
 
-# include common makefile for c1 platform
-$(call inherit-product-if-exists, device/samsung/c1-common/common.mk)
+# include common makefile for c1 platform (cdma)
+$(call inherit-product-if-exists, device/samsung/c1-common/common-cdma.mk)
+
+DEVICE_PACKAGE_OVERLAYS += device/samsung/epic4gtouch/overlay
 
 # apns config file
 PRODUCT_COPY_FILES += \
-        vendor/cyanogen/prebuilt/common/etc/apns-conf.xml:system/etc/apns-conf.xml
+        device/samsung/epic4gtouch/etc/apns-conf.xml:system/etc/apns-conf.xml
 
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
 	frameworks/base/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
 	frameworks/base/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
 	frameworks/base/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
-	frameworks/base/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
+	frameworks/base/data/etc/android.hardware.telephony.cdma.xml:system/etc/permissions/android.hardware.telephony.cdma.xml \
 	frameworks/base/data/etc/android.hardware.location.xml:system/etc/permissions/android.hardware.location.xml \
 	frameworks/base/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
 	frameworks/base/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
@@ -57,6 +59,10 @@ PRODUCT_COPY_FILES += \
 	frameworks/base/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml \
 	frameworks/base/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
 	packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml
+
+# Device specific apps
+PRODUCT_PACKAGES += \
+    SamsungServiceMode
 
 # Prebuilt kl keymaps
 PRODUCT_COPY_FILES += \
@@ -78,12 +84,27 @@ PRODUCT_PROPERTY_OVERRIDES := \
 PRODUCT_PROPERTY_OVERRIDES += \
        wifi.interface=eth0 \
        wifi.supplicant_scan_interval=20 \
-       ro.telephony.ril_class=samsung \
-       ro.telephony.sends_barcount=1 \
-       mobiledata.interfaces=pdp0,eth0,gprs,ppp0 \
        dalvik.vm.heapsize=64m \
        persist.service.usb.setting=0 \
-       dev.sfbootcomplete=0
+       dev.sfbootcomplete=0 \
+       persist.sys.vold.switchexternal=1
+
+# Telephony property for CDMA
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.config.vc_call_vol_steps=15 \
+    ro.telephony.default_network=4 \
+    ro.com.google.clientidbase=android-sprint-us \
+    ro.cdma.home.operator.numeric=310120 \
+    ro.cdma.home.operator.alpha=Sprint \
+    net.cdma.pppd.authtype=require-pap \
+    net.cdma.pppd.user=user[SPACE]SprintNextel \
+    net.cdma.datalinkinterface=/dev/ttyCDMA0 \
+    net.interfaces.defaultroute=cdma \
+    net.cdma.ppp.interface=ppp0 \
+    net.connectivity.type=CDMA1 \
+    mobiledata.interfaces=eth0,ppp0\
+    ro.telephony.ril_class=samsung \
+    ro.ril.samsung_cdma=true
 
 # enable Google-specific location features,
 # like NetworkLocationProvider and LocationCollector
@@ -102,14 +123,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # we have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
 
-# Screen density is actually considered a locale (since it is taken into account
-# the the build-time selection of resources). The product definitions including
-# this file must pay attention to the fact that the first entry in the final
-# PRODUCT_LOCALES expansion must not be a density.
-PRODUCT_LOCALES := hdpi
-
 # kernel modules for ramdisk
-RAMDISK_MODULES = $(addprefix device/samsung/epic4gtouch/,bthid.ko dhd.ko gspca_main.ko j4fs.ko \
+RAMDISK_MODULES = $(addprefix device/samsung/epic4gtouch/,bthid.ko dhd.ko j4fs.ko \
 	scsi_wait_scan.ko vibrator.ko cyasswitch.ko)
 PRODUCT_COPY_FILES += $(foreach module,\
 	$(RAMDISK_MODULES),\

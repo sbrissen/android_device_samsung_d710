@@ -17,12 +17,12 @@
 # Product-specific compile-time definitions.
 #
 
-# Set this up here so that BoardVendorConfig.mk can override it
+# Set this up here so that BoardConfigVendor.mk can override it
 BOARD_USES_GENERIC_AUDIO := false
 BOARD_PREBUILT_LIBAUDIO := true
 BOARD_USE_YAMAHAPLAYER := true
 
-BOARD_USES_LIBSECRIL_STUB := true
+BOARD_USES_LIBSECRIL_STUB := false
 
 # Use the non-open-source parts, if they're present
 -include vendor/samsung/epic4gtouch/BoardConfigVendor.mk
@@ -42,30 +42,17 @@ TARGET_PROVIDES_INIT := true
 TARGET_PROVIDES_INIT_TARGET_RC := true
 TARGET_BOARD_PLATFORM := smdkv310
 TARGET_BOOTLOADER_BOARD_NAME := SPH-D710
-TARGET_RECOVERY_INITRC := device/samsung/c1-common/recovery.rc
+TARGET_RECOVERY_INITRC := device/samsung/epic4gtouch/recovery.rc
 TARGET_PROVIDES_MEDIASERVER := true
-
-BOARD_MOBILEDATA_INTERFACE_NAME = "pdp0"
 
 # Releasetools
 TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := ./device/samsung/c1-common/releasetools/c1_ota_from_target_files
 TARGET_RELEASETOOL_IMG_FROM_TARGET_SCRIPT := ./device/samsung/c1-common/releasetools/c1_img_from_target_files
 
 # Camera
+USE_CAMERA_STUB := false
+ifeq ($(USE_CAMERA_STUB),false)
 BOARD_CAMERA_LIBRARIES := libcamera
-BOARD_USE_JPEG := true
-BOARD_USES_CAMERA_OVERLAY := true
-
-# Graphics and Video
-SCREEN_WIDTH := 800
-SCREEN_HEIGHT := 480
-DEFAULT_FB_NUM := 2
-BOARD_USES_COPYBIT := true
-BOARD_USES_OVERLAY := true
-BOARD_USES_SAMSUNG_COLORFORMAT := true
-
-ifdef BOARD_USES_SAMSUNG_COLORFORMAT
-COMMON_GLOBAL_CFLAGS += -DSAMSUNG_COLORFORMAT
 endif
 
 # Bluetooth
@@ -73,17 +60,13 @@ BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
 BOARD_FORCE_STATIC_A2DP := true
 
-# gps
+# GPS
 BOARD_USES_GPSWRAPPER := true
-
-# FM Radio
-BOARD_HAVE_FM_RADIO := true
-BOARD_GLOBAL_CFLAGS += -DHAVE_FM_RADIO
-BOARD_FM_DEVICE := si4709
 
 # Vibrator
 BOARD_HAS_VIBRATOR_IMPLEMENTATION := ../../device/samsung/c1-common/vibrator/tspdrv.c
 
+# Kernel
 BOARD_NAND_PAGE_SIZE := 4096 -s 128
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_KERNEL_BASE := 0x40000000
@@ -98,12 +81,13 @@ BOARD_FLASH_BLOCK_SIZE := 4096
 # Connectivity - Wi-Fi
 WPA_SUPPLICANT_VERSION := VER_0_6_X
 BOARD_WPA_SUPPLICANT_DRIVER := WEXT
+
 BOARD_WLAN_DEVICE := bcm4330
-WIFI_DRIVER_MODULE_PATH     := "/lib/modules/dhd.ko"
-WIFI_DRIVER_FW_STA_PATH     := "/system/vendor/firmware/bcm4330_sta.bin"
-WIFI_DRIVER_FW_AP_PATH      := "/system/vendor/firmware/bcm4330_aps.bin"
-WIFI_DRIVER_MODULE_NAME     :=  "dhd"
-WIFI_DRIVER_MODULE_ARG      :=  "firmware_path=/system/vendor/firmware/bcm4330_sta.bin nvram_path=/system/etc/nvram_net.txt"
+WIFI_DRIVER_MODULE_PATH := "/lib/modules/dhd.ko"
+WIFI_DRIVER_FW_STA_PATH := "/system/vendor/firmware/bcm4330_sta.bin"
+WIFI_DRIVER_FW_AP_PATH := "/system/vendor/firmware/bcm4330_aps.bin"
+WIFI_DRIVER_MODULE_NAME := "dhd"
+WIFI_DRIVER_MODULE_ARG := "firmware_path=/system/vendor/firmware/bcm4330_sta.bin nvram_path=/system/etc/nvram_net.txt"
 
 # Vold
 BOARD_VOLD_MAX_PARTITIONS := 12
@@ -114,11 +98,10 @@ TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/samsung/epic4gtouch/recovery/recovery_ui.c
 BOARD_USES_MMCUTILS := true
 BOARD_HAS_NO_MISC_PARTITION := true
-
 BOARD_CUSTOM_BOOTIMG_MK := device/samsung/c1-common/shbootimg.mk
 
 # assert
-TARGET_OTA_ASSERT_DEVICE := SPH-D710
+TARGET_OTA_ASSERT_DEVICE := epic4gtouch,SPH-D710
 
-# Include aries specific stuff
+# Include c1 specific stuff
 -include device/samsung/c1-common/Android.mk
