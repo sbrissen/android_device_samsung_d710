@@ -152,7 +152,7 @@ PRODUCT_PACKAGES += \
 
 # Sensors
 PRODUCT_PACKAGES += \
-	lights.exynos4
+	lights.SPH-D710
 
 # Filesystem management tools
 PRODUCT_PACKAGES += \
