@@ -48,11 +48,6 @@ PRODUCT_COPY_FILES += \
 	frameworks/base/data/etc/android.software.sip.xml:system/etc/permissions/android.software.sip.xml \
 	frameworks/base/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml 
 
-# Generated kcm keymaps
-PRODUCT_PACKAGES := \
-       cypress-touchkey.kcm \
-       s3c-keypad.kcm
-
 # Audio
 PRODUCT_COPY_FILES += \
 	device/samsung/epic4gtouch/configs/asound.conf:system/etc/asound.conf
@@ -65,7 +60,6 @@ PRODUCT_COPY_FILES += \
 # omx
 PRODUCT_COPY_FILES += \
 	device/samsung/epic4gtouch/configs/media_profiles.xml:system/etc/media_profiles.xml \
-	device/samsung/epic4gtouch/configs/somxreg.conf:system/etc/somxreg.conf \
 	device/samsung/epic4gtouch/configs/secomxregistry:system/etc/secomxregistry
 
 # Bluetooth configuration files
@@ -166,6 +160,35 @@ PRODUCT_PACKAGES += \
     SprintMenu \
     WiMAXHiddenMenu \
     SystemUpdateUI
+# MFC API
+PRODUCT_PACKAGES += \
+    libsecmfcapi
+
+# OMX
+BOARD_HAL_PATH := device/samsung/epic4gtouch
+BOARD_HMM_PATH := device/samsung/epic4gtouch/multimedia
+
+PRODUCT_PACKAGES += \
+    libstagefrighthw \
+    libcsc \
+    libsecbasecomponent \
+    libsecosal \
+    libSEC_OMX_Resourcemanager \
+    libSEC_OMX_Core \
+    libSEC_OMX_Vdec \
+    libOMX.SEC.AVC.Decoder \
+    libOMX.SEC.M4V.Decoder \
+    libOMX.SEC.WMV.Decoder \
+    libOMX.SEC.VP8.Decoder \
+    libSEC_OMX_Venc \
+    libOMX.SEC.AVC.Encoder \
+    libOMX.SEC.M4V.Encoder \
+    libSEC_OMX_Adec \
+    libOMX.SEC.MP3.Decoder \
+	libhwconverter \
+    libswconverter \
+	libs5pjpeg \
+	libUMP
 
 # enable Google-specific location features,
 # like NetworkLocationProvider and LocationCollector
