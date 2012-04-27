@@ -17,6 +17,7 @@ DEVICE_PACKAGE_OVERLAYS := device/samsung/epic4gtouch/overlay
 # Init files
 PRODUCT_COPY_FILES += \
 	device/samsung/epic4gtouch/lpm.rc:root/lpm.rc \
+	device/samsung/epic4gtouch/init.rc:root/init.rc \
 	device/samsung/epic4gtouch/init.smdk4210.rc:root/init.smdk4210.rc \
 	device/samsung/epic4gtouch/init.smdk4210.usb.rc:root/init.smdk4210.usb.rc \
 	device/samsung/epic4gtouch/ueventd.rc:root/ueventd.rc \
@@ -47,6 +48,43 @@ PRODUCT_COPY_FILES += \
 	frameworks/base/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
 	frameworks/base/data/etc/android.software.sip.xml:system/etc/permissions/android.software.sip.xml \
 	frameworks/base/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml 
+	
+# Keylayout
+PRODUCT_COPY_FILES += \
+    device/samsung/epic4gtouch/usr/keylayout/AVRCP.kl:system/usr/keylayout/AVRCP.kl \
+    device/samsung/epic4gtouch/usr/keylayout/Generic.kl:system/usr/keylayout/Generic.kl \
+    device/samsung/epic4gtouch/usr/keylayout/max8997-muic.kl:system/usr/keylayout/max8997-muic.kl \
+    device/samsung/epic4gtouch/usr/keylayout/melfas-touchkey.kl:system/usr/keylayout/melfas-touchkey.kl \
+    device/samsung/epic4gtouch/usr/keylayout/qwerty.kl:system/usr/keylayout/qwerty.kl \
+    device/samsung/epic4gtouch/usr/keylayout/samsung-keypad.kl:system/usr/keylayout/samsung-keypad.kl \
+    device/samsung/epic4gtouch/usr/keylayout/sec_key.kl:system/usr/keylayout/sec_key.kl \
+    device/samsung/epic4gtouch/usr/keylayout/sec_touchkey.kl:system/usr/keylayout/sec_touchkey.kl \
+    device/samsung/epic4gtouch/usr/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \
+    device/samsung/epic4gtouch/usr/keylayout/sii9234_rcp.kl:system/usr/keylayout/sii9234_rcp.kl \
+    device/samsung/epic4gtouch/usr/keylayout/Vendor_04e8_Product_7021.kl:system/usr/keylayout/Vendor_04e8_Product_7021.kl \
+    device/samsung/epic4gtouch/usr/keylayout/Vendor_05ac_Product_0239.kl:system/usr/keylayout/Vendor_05ac_Product_0239.kl \
+    device/samsung/epic4gtouch/usr/keylayout/Vendor_22b8_Product_093d.kl:system/usr/keylayout/Vendor_22b8_Product_093d.kl \
+    device/samsung/epic4gtouch/usr/keylayout/Vendor_045e_Product_028e.kl:system/usr/keylayout/Vendor_045e_Product_028e.kl \
+    device/samsung/epic4gtouch/usr/keylayout/Vendor_046d_Product_c216.kl:system/usr/keylayout/Vendor_046d_Product_c216.kl \
+    device/samsung/epic4gtouch/usr/keylayout/Vendor_046d_Product_c294.kl:system/usr/keylayout/Vendor_046d_Product_c294.kl \
+    device/samsung/epic4gtouch/usr/keylayout/Vendor_046d_Product_c299.kl:system/usr/keylayout/Vendor_046d_Product_c299.kl \
+    device/samsung/epic4gtouch/usr/keylayout/Vendor_046d_Product_c532.kl:system/usr/keylayout/Vendor_046d_Product_c532.kl \
+    device/samsung/epic4gtouch/usr/keylayout/Vendor_054c_Product_0268.kl:system/usr/keylayout/Vendor_054c_Product_0268.kl
+	
+# Keychars
+PRODUCT_COPY_FILES += \
+   device/samsung/epic4gtouch/usr/keychars/Generic.kcm:system/usr/keychars/Generic.kcm \
+   device/samsung/epic4gtouch/usr/keychars/qwerty.kcm:system/usr/keychars/qwerty.kcm \
+   device/samsung/epic4gtouch/usr/keychars/qwerty2.kcm:system/usr/keychars/qwerty2.kcm \
+   device/samsung/epic4gtouch/usr/keychars/Virtual.kcm:system/usr/keychars/Virtual.kcm
+
+#idc
+PRODUCT_COPY_FILES += \
+   device/samsung/epic4gtouch/usr/idc/melfas_ts.idc:system/usr/idc/melfas_ts.idc \
+   device/samsung/epic4gtouch/usr/idc/mxt224_ts_input.idc:system/usr/idc/mxt224_ts_input.idc \
+   device/samsung/epic4gtouch/usr/idc/qwerty.idc:system/usr/idc/qwerty.idc \
+   device/samsung/epic4gtouch/usr/idc/qwerty2.idc:system/usr/idc/qwerty2.idc \
+   device/samsung/epic4gtouch/usr/idc/sec_touchscreen.idc:system/usr/idc/sec_touchscreen.idc 
 
 # Audio
 PRODUCT_COPY_FILES += \
@@ -67,8 +105,8 @@ PRODUCT_COPY_FILES += \
 	system/bluetooth/data/main.le.conf:system/etc/bluetooth/main.conf
 	
 # Bluetooth MAC Address
-PRODUCT_PACKAGES += \
-	bdaddr_read
+#PRODUCT_PACKAGES += \
+#	bdaddr_read
 	
 # Vold
 PRODUCT_COPY_FILES += \
@@ -127,26 +165,25 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_COPY_FILES += \
 	device/samsung/epic4gtouch/configs/gps.conf:system/etc/gps.conf \
 	device/samsung/epic4gtouch/configs/sirfgps.conf:system/etc/sirfgps.conf
-	
-PRODUCT_PACKAGES += \
-	gps.exynos4
 
 # Packages
 PRODUCT_PACKAGES := \
     TvOut \
-    TvOutHack \
 	com.android.future.usb.accessory \
 	smdk4210_hdcp_keys \
-	GalaxyS2Settings
+	GalaxyS2Settings \
+	SamsungServiceMode \
+	Torch \
+	gps.exynos4
 	
 # Camera
 PRODUCT_PACKAGES += \
 	Camera \
-	camera.exynos4 
+	camera.exynos4
 
 # Sensors
 PRODUCT_PACKAGES += \
-	lights.SPH-D710
+	lights.exynos4
 
 # Filesystem management tools
 PRODUCT_PACKAGES += \
@@ -160,6 +197,14 @@ PRODUCT_PACKAGES += \
     SprintMenu \
     WiMAXHiddenMenu \
     SystemUpdateUI
+	
+#TV OUT
+#PRODUCT_PACKAGES += \
+#	libhdmiclient \
+#	libcec \
+#	libddc \
+#	libedid
+
 # MFC API
 PRODUCT_PACKAGES += \
     libsecmfcapi
@@ -188,7 +233,8 @@ PRODUCT_PACKAGES += \
 	libhwconverter \
     libswconverter \
 	libs5pjpeg \
-	libUMP
+	libUMP \
+	libfimg
 
 # enable Google-specific location features,
 # like NetworkLocationProvider and LocationCollector
@@ -216,35 +262,12 @@ PRODUCT_AAPT_CONFIG := normal hdpi
 PRODUCT_AAPT_PREF_CONFIG := hdpi
 PRODUCT_LOCALES += hdpi
 
-# kernel modules for ramdisk
-RAMDISK_MODULES = $(addprefix device/samsung/epic4gtouch/modules/, j4fs.ko \
-	scsi_wait_scan.ko cyasswitch.ko)
-PRODUCT_COPY_FILES += $(foreach module,\
-	$(RAMDISK_MODULES),\
-	$(module):root/lib/modules/$(notdir $(module)))
-
-# other kernel modules not in ramdisk
-PRODUCT_COPY_FILES += $(foreach module,\
-	$(filter-out $(RAMDISK_MODULES),$(wildcard device/samsung/epic4gtouch/modules/*.ko)),\
-	$(module):system/lib/modules/$(notdir $(module)))
-
-# kernel modules for recovery ramdisk
-PRODUCT_COPY_FILES += \
-    device/samsung/epic4gtouch/modules/j4fs.ko:recovery/root/lib/modules/j4fs.ko
-
-PRODUCT_COPY_FILES += \
-    device/samsung/epic4gtouch/kernel:kernel
-	
 $(call inherit-product, frameworks/base/build/phone-hdpi-512-dalvik-heap.mk)
 
 # See comment at the top of this file. This is where the other
 # half of the device-specific product definition file takes care
 # of the aspects that require proprietary drivers that aren't
 # commonly available
-
-# Include exynos4 platform specific parts
-#$(call inherit-product, hardware/sec/exynos4/exynos4.mk)
-#$(call inherit-product, hardware/sec/exynos4/Android.mk)
 
 $(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4330/device-bcm.mk)
 $(call inherit-product-if-exists, vendor/samsung/epic4gtouch/epic4gtouch-vendor.mk)

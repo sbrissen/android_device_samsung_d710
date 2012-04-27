@@ -56,6 +56,10 @@ BOARD_NAND_PAGE_SIZE := 4096 -s 128
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_KERNEL_BASE := 0x40000000
 BOARD_KERNEL_CMDLINE := console=ttySAC2,115200 consoleblank=0
+
+# Kernel Config
+TARGET_KERNEL_SOURCE := kernel/samsung/smdk4210
+TARGET_KERNEL_CONFIG := cyanogenmod_epic4gtouch_defconfig
 TARGET_PREBUILT_KERNEL := device/samsung/epic4gtouch/kernel
 
 # Filesystem
@@ -80,6 +84,11 @@ EGL_ALWAYS_ASYNC := true
 # HWComposer
 BOARD_USES_HWCOMPOSER := true
 BOARD_USE_SECTVOUT := true
+BOARD_USES_FIMGAPI := true
+#BOARD_USES_HDMI := true
+
+BOARD_HAL_PATH := hardware/samsung/exynos4/hal
+BOARD_MM_PATH := hardware/samsung/exynos4/multimedia
 
 # OMX
 BOARD_HAVE_CODEC_SUPPORT := SAMSUNG_CODEC_SUPPORT
@@ -108,7 +117,7 @@ BOARD_WPA_SUPPLICANT_DRIVER      := NL80211
 BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_bcmdhd
 BOARD_HOSTAPD_DRIVER             := NL80211
 BOARD_HOSTAPD_PRIVATE_LIB        := lib_driver_cmd_bcmdhd
-WIFI_DRIVER_MODULE_PATH          := "/lib/modules/dhd.ko"
+WIFI_DRIVER_MODULE_PATH          := "/system/lib/modules/dhd.ko"
 WIFI_DRIVER_FW_PATH_PARAM        := "/sys/module/dhd/parameters/firmware_path"
 WIFI_DRIVER_FW_PATH_STA          := "/system/etc/wifi/bcm4330_sta.bin"
 WIFI_DRIVER_FW_PATH_AP           := "/system/etc/wifi/bcm4330_apsta.bin"
@@ -130,11 +139,13 @@ TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/class/android_usb/f_mass_storage/lun%d/
 # Recovery
 BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/samsung/epic4gtouch/recovery/recovery_keys.c
 BOARD_CUSTOM_GRAPHICS := ../../../device/samsung/epic4gtouch/recovery/graphics.c
-BOARD_UMS_LUNFILE := "/sys/class/android_usb/f_mass_storage/lun0/file"
+BOARD_UMS_LUNFILE := "/sys/class/android_usb/f_mass_storage/lun/file"
 TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_USES_MMCUTILS := true
 BOARD_HAS_NO_MISC_PARTITION := true
 BOARD_HAS_NO_SELECT_BUTTON := true
+
+TARGET_SPECIFIC_HEADER_PATH := device/samsung/epic4gtouch/include
 
 # assert
 TARGET_OTA_ASSERT_DEVICE := SPH-D710,epic4gtouch

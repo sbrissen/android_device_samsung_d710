@@ -1,3 +1,6 @@
+## Specify phone tech before including full_phone
+$(call inherit-product, vendor/cm/config/cdma.mk)
+
 # Release name
 PRODUCT_RELEASE_NAME := Epic4gTouch
 
@@ -14,4 +17,4 @@ PRODUCT_BRAND := Samsung
 PRODUCT_MODEL := SPH-D710
 
 #Set build fingerprint / ID / Prduct Name ect.
-PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=SPH-D710 TARGET_DEVICE=SPH-D710 BUILD_DISPLAY_ID=IML74K BUILD_FINGERPRINT=samsung/SPH-D710/SPH-D710:4.0.3/IML74K/FB27:user/release-keys  PRIVATE_BUILD_DESC="SPH-D710-user 4.0.3 IML74K FB27 release-keys"
+PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=SPH-D710 TARGET_DEVICE=SPH-D710 BUILD_FINGERPRINT=samsung/SPH-D710/SPH-D710:4.0.3/IML74K/FB27:user/release-keys  PRIVATE_BUILD_DESC="SPH-D710-user 4.0.3 IML74K FB27 release-keys"
