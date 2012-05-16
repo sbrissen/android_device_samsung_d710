@@ -179,7 +179,8 @@ PRODUCT_PACKAGES := \
 # Camera
 PRODUCT_PACKAGES += \
 	Camera \
-	camera.exynos4
+	camera.exynos4 \
+	libs5pjpeg
 
 # Sensors
 PRODUCT_PACKAGES += \

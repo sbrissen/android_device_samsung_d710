@@ -16,7 +16,7 @@
  * limitations under the License.
  */
 
-// #define LOG_NDEBUG 0
+#define LOG_NDEBUG 1
 #define LOG_TAG "lights"
 #include <cutils/log.h>
 #include <stdint.h>
@@ -30,18 +30,36 @@
 
 static pthread_once_t g_init = PTHREAD_ONCE_INIT;
 static pthread_mutex_t g_lock = PTHREAD_MUTEX_INITIALIZER;
+static int g_enable_touchlight = -1;
+
 
 static char const RED_LED_DIR[]   = "/sys/class/leds/red";
 static char const BLUE_LED_DIR[]  = "/sys/class/leds/blue";
 static char const LCD_FILE[]      = "/sys/class/backlight/panel/brightness";
-static char const BUTTONS_FILE[]  = "/sys/devices/virtual/sec/sec_touchkey/brightness";
-char const*const BUTTON_POWER     = "/sys/devices/virtual/sec/sec_touchkey/enable_disable";
+static char const BUTTONS_FILE[]  = "/sys/class/sec/sec_touchkey/brightness";
+char const*const BUTTON_POWER     = "/sys/class/sec/sec_touchkey/enable_disable";
 void init_globals(void)
 {
     // init the mutex
     pthread_mutex_init(&g_lock, NULL);
 }
 
+void
+load_settings()
+{
+    FILE* fp = fopen("/data/.disable_touchlight", "r");
+    if (!fp) {
+        g_enable_touchlight = 1;
+    } else {
+        g_enable_touchlight = (int)(fgetc(fp));
+        if (g_enable_touchlight == '1')
+            g_enable_touchlight = 1;
+        else
+            g_enable_touchlight = 0;
+
+        fclose(fp);
+    }
+}
 static struct led_state {
 	unsigned int enabled;
 	int          delay_on, delay_off;
@@ -238,12 +256,15 @@ set_light_attention(struct light_device_t* dev,
 static int set_light_backlight(struct light_device_t *dev,
 			struct light_state_t const *state)
 {
+	load_settings();
+	
 	int err = 0;
 	int brightness = rgb_to_brightness(state);
 
 	pthread_mutex_lock(&g_lock);
 	err = write_int(LCD_FILE, brightness);
-	err = write_int(BUTTONS_FILE, brightness > 0 ? 1 : 2);
+	if (g_enable_touchlight == -1 || g_enable_touchlight > 0)
+		err = write_int(BUTTONS_FILE, brightness > 0 ? 1 : 0);
 	pthread_mutex_unlock(&g_lock);
 	return err;
 }

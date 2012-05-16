@@ -68,6 +68,7 @@ def WriteFullOTAPackage(input_zip, output_zip):
   if OPTIONS.wipe_user_data:
     script.FormatPartition("/data")
 
+  script.Unmount("/system")
   script.FormatPartition("/system")
   script.Mount("/system")
   script.UnpackPackageDir("recovery", "/system")
@@ -89,9 +90,6 @@ def WriteFullOTAPackage(input_zip, output_zip):
   if OPTIONS.backuptool:
     script.ShowProgress(0.2, 10)
     script.RunBackup("restore")
-
-  #script.RunModelidCfg()
-  #script.RunVerifyCachePartitionSize()
 
   script.ShowProgress(0.2, 10)
   script.EMMCWriteRawImage("/dev/block/mmcblk0p5", "boot.img")
