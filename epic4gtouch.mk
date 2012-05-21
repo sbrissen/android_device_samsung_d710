@@ -190,7 +190,7 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.wimax.interface=uwbr0 \
-    net.tcp.buffersize.wimax=4096,524288,1048576,4096,16384,110208
+    net.tcp.buffersize.wimax=4096,524288,1048576,4096,16384,110208 \
 	persist.service.usb.hubport=4
 	
 # TV OUT
