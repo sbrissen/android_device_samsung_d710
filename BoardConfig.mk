@@ -86,10 +86,11 @@ BOARD_HAS_LED_NOTIF := true
 BOARD_USES_HWCOMPOSER := true
 BOARD_USE_SECTVOUT := true
 BOARD_USES_FIMGAPI := true
-#BOARD_USES_HDMI := true
+BOARD_USES_HDMI := true
+BOARD_SAMSUNG_TVOUT := true
 
 BOARD_HAL_PATH := hardware/samsung/exynos4/hal
-BOARD_MM_PATH := hardware/samsung/exynos4/multimedia
+BOARD_MM_PATH := hardware/samsung/exynos/multimedia
 
 # OMX
 BOARD_HAVE_CODEC_SUPPORT := SAMSUNG_CODEC_SUPPORT

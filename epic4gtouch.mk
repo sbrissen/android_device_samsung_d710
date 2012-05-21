@@ -95,18 +95,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
 	device/samsung/epic4gtouch/configs/apns-conf.xml:system/etc/apns-conf.xml
 	
-# omx
-PRODUCT_COPY_FILES += \
-	device/samsung/epic4gtouch/configs/media_profiles.xml:system/etc/media_profiles.xml \
-	device/samsung/epic4gtouch/configs/secomxregistry:system/etc/secomxregistry
-
 # Bluetooth configuration files
 PRODUCT_COPY_FILES += \
 	system/bluetooth/data/main.le.conf:system/etc/bluetooth/main.conf
-	
-# Bluetooth MAC Address
-#PRODUCT_PACKAGES += \
-#	bdaddr_read
 	
 # Vold
 PRODUCT_COPY_FILES += \
@@ -156,11 +147,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.carrier=Sprint	
 	#TODO: Finish adding cdma support to Smdk4210RIL
 	
-#WiMax
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.wimax.interface=uwbr0 \
-    net.tcp.buffersize.wimax=4096,524288,1048576,4096,16384,110208
-	
 # Gps
 PRODUCT_COPY_FILES += \
 	device/samsung/epic4gtouch/configs/gps.conf:system/etc/gps.conf \
@@ -181,6 +167,9 @@ PRODUCT_PACKAGES += \
 	Camera \
 	camera.exynos4 \
 	libs5pjpeg
+	
+PRODUCT_COPY_FILES += \
+	device/samsung/epic4gtouch/configs/media_profiles.xml:system/etc/media_profiles.xml
 
 # Sensors
 PRODUCT_PACKAGES += \
@@ -192,16 +181,21 @@ PRODUCT_PACKAGES += \
 	make_ext4fs \
 	setup_fs
 	
-#WIMAX
+# WIMAX
 PRODUCT_PACKAGES += \
     WiMAXSettings \
     SprintMenu \
     WiMAXHiddenMenu \
     SystemUpdateUI
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.wimax.interface=uwbr0 \
+    net.tcp.buffersize.wimax=4096,524288,1048576,4096,16384,110208
+	persist.service.usb.hubport=4
 	
-#TV OUT
+# TV OUT
 #PRODUCT_PACKAGES += \
-#	libhdmiclient \
+#	libhdmiclient
 #	libcec \
 #	libddc \
 #	libedid
@@ -211,12 +205,15 @@ PRODUCT_PACKAGES += \
     libsecmfcapi
 
 # OMX
-BOARD_HAL_PATH := device/samsung/epic4gtouch
-BOARD_HMM_PATH := device/samsung/epic4gtouch/multimedia
+TARGET_HAL_PATH := hardware/samsung/exynos4/hal
+TARGET_OMX_PATH := hardware/samsung/exynos/multimedia/openmax
+
+PRODUCT_COPY_FILES += \
+	device/samsung/epic4gtouch/configs/secomxregistry:system/etc/secomxregistry
 
 PRODUCT_PACKAGES += \
     libstagefrighthw \
-    libcsc \
+    libseccscapi \
     libsecbasecomponent \
     libsecosal \
     libSEC_OMX_Resourcemanager \
@@ -232,7 +229,6 @@ PRODUCT_PACKAGES += \
     libSEC_OMX_Adec \
     libOMX.SEC.MP3.Decoder \
 	libhwconverter \
-    libswconverter \
 	libs5pjpeg \
 	libUMP \
 	libfimg
@@ -272,4 +268,4 @@ $(call inherit-product, frameworks/base/build/phone-hdpi-512-dalvik-heap.mk)
 
 $(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4330/device-bcm.mk)
 $(call inherit-product-if-exists, vendor/samsung/epic4gtouch/epic4gtouch-vendor.mk)
-
+$(call inherit-product, hardware/samsung/exynos4210.mk)
