@@ -67,9 +67,6 @@ BOARD_SYSTEMIMAGE_PARTITION_SIZE := 536870912
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 2147483648
 BOARD_FLASH_BLOCK_SIZE := 4096
 
-# MTP
-#BOARD_MTP_DEVICE := "/dev/usb_mtp_gadget"
-
 # Releasetools
 TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := ./device/samsung/epic4gtouch/releasetools/epic4gtouch_ota_from_target_files
 TARGET_RELEASETOOL_IMG_FROM_TARGET_SCRIPT := ./device/samsung/epic4gtouch/releasetools/epic4gtouch_img_from_target_files
@@ -88,6 +85,7 @@ BOARD_USE_SECTVOUT := true
 BOARD_USES_FIMGAPI := true
 BOARD_USES_HDMI := true
 BOARD_SAMSUNG_TVOUT := true
+BOARD_HDMI_DDC_CH := DDC_CH_I2C_7
 
 BOARD_HAL_PATH := hardware/samsung/exynos4/hal
 BOARD_MM_PATH := hardware/samsung/exynos/multimedia
@@ -140,7 +138,7 @@ TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/class/android_usb/f_mass_storage/lun%d/
 # Recovery
 BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/samsung/epic4gtouch/recovery/recovery_keys.c
 BOARD_CUSTOM_GRAPHICS := ../../../device/samsung/epic4gtouch/recovery/graphics.c
-BOARD_UMS_LUNFILE := "/sys/class/android_usb/f_mass_storage/lun/file"
+BOARD_UMS_LUNFILE := "/sys/class/android_usb/f_mass_storage/lun%d/file"
 TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_USES_MMCUTILS := true
 BOARD_HAS_NO_MISC_PARTITION := true

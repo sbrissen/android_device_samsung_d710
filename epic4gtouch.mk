@@ -173,7 +173,8 @@ PRODUCT_COPY_FILES += \
 
 # Sensors
 PRODUCT_PACKAGES += \
-	lights.exynos4
+	lights.exynos4 \
+	sensors.exynos4
 
 # Filesystem management tools
 PRODUCT_PACKAGES += \
