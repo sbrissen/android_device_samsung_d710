@@ -76,6 +76,11 @@ BOARD_EGL_CFG := device/samsung/epic4gtouch/configs/egl.cfg
 USE_OPENGL_RENDERER := true
 EGL_ALWAYS_ASYNC := true
 
+# Charging mode
+BOARD_CHARGING_MODE_BOOTING_LPM := /sys/class/power_supply/battery/batt_lp_charging
+BOARD_BATTERY_DEVICE_NAME := "battery"
+BOARD_CHARGER_RES := device/samsung/epic4gtouch/res/charger
+
 # Notification LED
 BOARD_HAS_LED_NOTIF := true
 
@@ -83,7 +88,6 @@ BOARD_HAS_LED_NOTIF := true
 BOARD_USES_HWCOMPOSER := true
 BOARD_USE_SECTVOUT := true
 BOARD_USES_FIMGAPI := true
-BOARD_USES_HDMI := false
 BOARD_SAMSUNG_TVOUT := true
 BOARD_HDMI_DDC_CH := DDC_CH_I2C_7
 
@@ -133,12 +137,12 @@ BOARD_HAVE_BLUETOOTH_BCM := true
 BOARD_VOLD_MAX_PARTITIONS := 12
 BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := false
 BOARD_VOLD_DISC_HAS_MULTIPLE_MAJORS := true
-TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/class/android_usb/f_mass_storage/lun%d/file"
+TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/platform/s3c-usbgadget/gadget/lun%d/file"
 
 # Recovery
 BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/samsung/epic4gtouch/recovery/recovery_keys.c
 BOARD_CUSTOM_GRAPHICS := ../../../device/samsung/epic4gtouch/recovery/graphics.c
-BOARD_UMS_LUNFILE := "/sys/class/android_usb/f_mass_storage/lun%d/file"
+BOARD_UMS_LUNFILE := "/sys/class/android_usb/android0/f_mass_storage/lun0/file"
 TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_USES_MMCUTILS := true
 BOARD_HAS_NO_MISC_PARTITION := true

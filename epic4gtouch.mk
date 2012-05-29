@@ -170,6 +170,11 @@ PRODUCT_PACKAGES += \
 	
 PRODUCT_COPY_FILES += \
 	device/samsung/epic4gtouch/configs/media_profiles.xml:system/etc/media_profiles.xml
+	
+# Charger
+PRODUCT_PACKAGES += \
+    charger \
+    charger_res_images
 
 # Sensors
 PRODUCT_PACKAGES += \
@@ -231,7 +236,6 @@ PRODUCT_PACKAGES += \
     libOMX.SEC.MP3.Decoder \
 	libhwconverter \
 	libs5pjpeg \
-	libUMP \
 	libfimg
 
 # enable Google-specific location features,
