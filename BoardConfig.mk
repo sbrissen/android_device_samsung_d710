@@ -51,7 +51,8 @@ TARGET_PROVIDES_INIT := true
 TARGET_PROVIDES_INIT_TARGET_RC := true
 TARGET_RECOVERY_INITRC := device/samsung/epic4gtouch/recovery.rc
 
-BOARD_NAND_PAGE_SIZE := 4096 -s 128
+BOARD_NAND_PAGE_SIZE := 4096
+BOARD_NAND_SPARE_SIZE := 128
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_KERNEL_BASE := 0x40000000
 BOARD_KERNEL_CMDLINE := console=ttySAC2,115200 consoleblank=0
@@ -80,6 +81,8 @@ EGL_ALWAYS_ASYNC := true
 BOARD_CHARGING_MODE_BOOTING_LPM := /sys/class/power_supply/battery/batt_lp_charging
 BOARD_BATTERY_DEVICE_NAME := "battery"
 BOARD_CHARGER_RES := device/samsung/epic4gtouch/res/charger
+
+BOARD_SUPPRESS_EMMC_WIPE := true
 
 # Notification LED
 BOARD_HAS_LED_NOTIF := true

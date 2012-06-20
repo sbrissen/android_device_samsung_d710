@@ -133,7 +133,7 @@
     </integer-array>
 
     <!-- Minimum screen brightness allowed by the power manager. -->
-    <integer name="config_screenBrightnessDim">10</integer>
+    <integer name="config_screenBrightnessDim">29</integer>
 
     <!-- XXXXX NOTE THE FOLLOWING RESOURCES USE THE WRONG NAMING CONVENTION.
          Please don't copy them, copy anything else. -->
@@ -257,6 +257,8 @@
 	
     <!-- If this value is true, we handle Samsung CDMA's message ID method -->
     <bool name="config_smsSamsungCdmaAlternateMessageIDEncoding">true</bool>
+	
+	<integer name="config_deviceHardwareKeys">15</integer>
 	
 
 </resources>

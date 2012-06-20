@@ -155,6 +155,7 @@ PRODUCT_COPY_FILES += \
 # Packages
 PRODUCT_PACKAGES := \
     TvOut \
+	audio.a2dp.default \
 	com.android.future.usb.accessory \
 	smdk4210_hdcp_keys \
 	GalaxyS2Settings \
