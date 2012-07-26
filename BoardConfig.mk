@@ -35,6 +35,7 @@ TARGET_GLOBAL_CPPFLAGS += -mtune=cortex-a9 -mfpu=neon -mfloat-abi=softfp
 EXYNOS4210_ENHANCEMENTS := true
 
 ifdef EXYNOS4210_ENHANCEMENTS
+COMMON_GLOBAL_CFLAGS += -DEXYNOS4_ENHANCEMENTS
 COMMON_GLOBAL_CFLAGS += -DEXYNOS4210_ENHANCEMENTS
 COMMON_GLOBAL_CFLAGS += -DSURFACEFLINGER_FORCE_SCREEN_RELEASE
 endif
@@ -77,6 +78,9 @@ BOARD_EGL_CFG := device/samsung/epic4gtouch/configs/egl.cfg
 USE_OPENGL_RENDERER := true
 EGL_ALWAYS_ASYNC := true
 
+# Enable WEBGL in WebKit
+ENABLE_WEBGL := true
+
 # Charging mode
 BOARD_CHARGING_MODE_BOOTING_LPM := /sys/class/power_supply/battery/batt_lp_charging
 BOARD_BATTERY_DEVICE_NAME := "battery"
@@ -93,6 +97,7 @@ BOARD_USE_SECTVOUT := true
 BOARD_USES_FIMGAPI := true
 BOARD_SAMSUNG_TVOUT := true
 BOARD_HDMI_DDC_CH := DDC_CH_I2C_7
+BOARD_USES_PROPRIETARY_LIBFIMC := true
 
 BOARD_HAL_PATH := hardware/samsung/exynos4/hal
 BOARD_MM_PATH := hardware/samsung/exynos/multimedia
@@ -108,9 +113,12 @@ BOARD_USES_MFC_FPS := true
 # Audio
 BOARD_USE_YAMAHAPLAYER := true
 BOARD_USE_SAMSUNG_SEPARATEDSTREAM := true
+BOARD_HAS_SAMSUNG_VOLUME_BUG := true
+COMMON_GLOBAL_CFLAGS += -DICS_AUDIO_BLOB
 
 # Camera
 COMMON_GLOBAL_CFLAGS += -DSAMSUNG_CAMERA_HARDWARE
+BOARD_USES_PROPRIETARY_LIBCAMERA := true
 
 # RIL
 BOARD_MOBILEDATA_INTERFACE_NAME := "ppp0"
@@ -152,6 +160,13 @@ BOARD_HAS_NO_MISC_PARTITION := true
 BOARD_HAS_NO_SELECT_BUTTON := true
 
 TARGET_SPECIFIC_HEADER_PATH := device/samsung/epic4gtouch/include
+
+# Nearly all shipped I9100 devices have defective eMMC chips (VYL00M fwrev 0x19)
+# Prevent usage of ERASE commands in recovery on these boards.
+# This is redundant for our recovery since the kernel has MMC_CAP_ERASE
+# disabled for mshci.c, and so do nearly all I9100 kernels,
+# but better safe than sorry.
+BOARD_SUPPRESS_EMMC_WIPE := true
 
 # assert
 TARGET_OTA_ASSERT_DEVICE := SPH-D710,epic4gtouch
