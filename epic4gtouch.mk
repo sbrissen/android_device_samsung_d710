@@ -139,7 +139,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     net.cdma.ppp.interface=ppp0 \
     net.connectivity.type=CDMA1 \
     mobiledata.interfaces=ppp0 \
-    ro.telephony.ril_class=SamsungRIL \
+    ro.telephony.ril_class=Smdk4210RIL \
     ro.ril.samsung_cdma=true \
     ro.carrier=Sprint	
 	#TODO: Finish adding cdma support to Smdk4210RIL
@@ -170,7 +170,7 @@ PRODUCT_PACKAGES += \
 	
 PRODUCT_COPY_FILES += \
 	device/samsung/epic4gtouch/configs/media_profiles.xml:system/etc/media_profiles.xml \
-	device/samsung/epic4gtouch/configs/media_profiles.xml:system/etc/media_codecs.xml
+	device/samsung/epic4gtouch/configs/media_codecs.xml:system/etc/media_codecs.xml
 	
 # Charger
 PRODUCT_PACKAGES += \
@@ -252,7 +252,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Default=true for development builds, set by android buildsystem.
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.kernel.android.checkjni=0 \
-    dalvik.vm.checkjni=false
+    dalvik.vm.checkjni=false \
+	dalvik.vm.dexopt-data-only=1
 
 # we have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
