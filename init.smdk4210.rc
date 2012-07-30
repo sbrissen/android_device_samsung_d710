@@ -71,8 +71,8 @@ on post-fs-data
     chmod 0664 /sys/class/sec/gps/GPS_PWR_EN/value
     chown root system /sys/class/sec/gps/GPS_nRST/value
     chmod 0664 /sys/class/sec/gps/GPS_nRST/value
-    mkdir /data/gps 771 system system
-    chown system system /data/gps
+    mkdir /data/gps 771 gps system
+    chown gps system /data/gps
 
     # give system access to wpa_supplicant.conf for backup and restore
     mkdir /data/misc/wifi 0770 wifi wifi
@@ -480,6 +480,11 @@ service iprenew_uwbr0 /system/bin/dhcpcd -n
     class main
     disabled
     oneshot
+	
+service gpsd /system/bin/gpsd
+    class main
+    user gps
+    group system inet
 
 # for bluetooth
 service hciattach /system/bin/brcm_patchram_plus --enable_hci --enable_lpm --no2bytes --tosleep 50000 \

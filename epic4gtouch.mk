@@ -139,7 +139,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     net.cdma.ppp.interface=ppp0 \
     net.connectivity.type=CDMA1 \
     mobiledata.interfaces=ppp0 \
-    ro.telephony.ril_class=Smdk4210RIL \
+    ro.telephony.ril_class=Smdk4210CdmaRIL \
     ro.ril.samsung_cdma=true \
     ro.carrier=Sprint	
 	#TODO: Finish adding cdma support to Smdk4210RIL
