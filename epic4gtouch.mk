@@ -92,6 +92,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
 	device/samsung/epic4gtouch/configs/apns-conf.xml:system/etc/apns-conf.xml
 	
+# gps
+PRODUCT_COPY_FILES += \
+  device/samsung/epic4gtouch/gpsfix:system/bin/gpsfix
+	
 # Bluetooth configuration files
 PRODUCT_COPY_FILES += \
 	system/bluetooth/data/main.le.conf:system/etc/bluetooth/main.conf
@@ -139,7 +143,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     net.cdma.ppp.interface=ppp0 \
     net.connectivity.type=CDMA1 \
     mobiledata.interfaces=ppp0 \
-    ro.telephony.ril_class=Smdk4210CdmaRIL \
+    ro.telephony.ril_class=SamsungCDMAv6RIL \
     ro.ril.samsung_cdma=true \
     ro.carrier=Sprint	
 	#TODO: Finish adding cdma support to Smdk4210RIL
@@ -164,7 +168,7 @@ PRODUCT_PACKAGES := \
 	
 # Camera
 PRODUCT_PACKAGES += \
-	Camera \
+	Gallery2 \
 	camera.exynos4 \
 	libs5pjpeg
 	
@@ -199,6 +203,15 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.wimax.interface=uwbr0 \
     net.tcp.buffersize.wimax=4096,524288,1048576,4096,16384,110208 \
 	persist.service.usb.hubport=4
+	
+# T-Mobile theme engine
+PRODUCT_PACKAGES += \
+       ThemeManager \
+       ThemeChooser \
+       com.tmobile.themes
+
+PRODUCT_COPY_FILES += \
+       device/samsung/epic4gtouch/configs/com.tmobile.software.themes.xml:system/etc/permissions/com.tmobile.software.themes.xml
 	
 # TV OUT
 #PRODUCT_PACKAGES += \
