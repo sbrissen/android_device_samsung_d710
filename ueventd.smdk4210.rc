@@ -40,6 +40,7 @@
 /dev/dpramerr              0660   radio      radio
 /dev/dpram0                0660   radio      radio
 /dev/dpram1                0660   radio      radio
+/dev/dpram_dump			   0660	  radio		 radio
 /dev/multipdp              0660   radio      radio
 
 # change here
