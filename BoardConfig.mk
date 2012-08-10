@@ -60,7 +60,7 @@ BOARD_KERNEL_CMDLINE := console=ttySAC2,115200 consoleblank=0
 
 # Kernel Config
 TARGET_KERNEL_SOURCE := kernel/samsung/smdk4210
-TARGET_KERNEL_CONFIG := cyanogenmod_epic4gtouch_defconfig
+TARGET_KERNEL_CONFIG := cyanogenmod_d710_defconfig
 
 # Filesystem
 TARGET_USERIMAGES_USE_EXT4 := true
