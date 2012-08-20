@@ -59,6 +59,7 @@ BOARD_KERNEL_BASE := 0x40000000
 BOARD_KERNEL_CMDLINE := console=ttySAC2,115200 consoleblank=0
 
 # Kernel Config
+TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-4.4.3
 TARGET_KERNEL_SOURCE := kernel/samsung/smdk4210
 TARGET_KERNEL_CONFIG := cyanogenmod_d710_defconfig
 
@@ -139,6 +140,7 @@ WIFI_DRIVER_FW_PATH_P2P          := "/system/etc/wifi/bcm4330_p2p.bin"
 WIFI_DRIVER_MODULE_NAME          := "dhd"
 WIFI_DRIVER_MODULE_ARG           := "firmware_path=/system/etc/wifi/bcm4330_sta.bin nvram_path=/system/etc/wifi/nvram_net.txt"
 WIFI_BAND                        := 802_11_ABG
+BOARD_LEGACY_NL80211_STA_EVENTS  := true
 
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
@@ -146,7 +148,7 @@ BOARD_HAVE_BLUETOOTH_BCM := true
 
 # Vold
 BOARD_VOLD_MAX_PARTITIONS := 12
-BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := false
+BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
 BOARD_VOLD_DISC_HAS_MULTIPLE_MAJORS := true
 TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/platform/s3c-usbgadget/gadget/lun%d/file"
 

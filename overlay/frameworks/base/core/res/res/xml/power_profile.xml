@@ -35,17 +35,17 @@
         <value>2.7</value>
         <value>3</value>
     </array>
-  <array name="cpu.speeds">
-    <value>100000</value>
-    <value>200000</value>
-    <value>400000</value>
-    <value>800000</value>
-    <value>1000000</value>
-  </array>
+    <array name="cpu.speeds">
+        <value>12000000</value>
+        <value>10000000</value>
+        <value>800000</value>
+        <value>500000</value>
+        <value>200000</value>
+    </array>
   <!-- Power consumption in suspend -->
     <item name="cpu.idle">2</item>
   <!-- Power consumption due to wake lock held -->
-  <item name="cpu.awake">44</item>
+  <!-- <item name="cpu.awake">44</item> -->
   <!-- Power consumption at different speeds -->
     <array name="cpu.active">
         <value>577</value>
@@ -54,4 +54,5 @@
         <value>148</value>
         <value>55</value>
     </array>
+	<item name="battery.capacity">1650</item>
 </device>

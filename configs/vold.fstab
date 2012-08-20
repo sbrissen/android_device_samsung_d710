@@ -17,6 +17,3 @@
 dev_mount internal /storage/sdcard0 11 /devices/platform/dw_mmc/mmc_host/mmc0/mmc0 encryptable_nonremovable
 
 dev_mount sdcard /storage/sdcard1 auto /devices/virtual/block/cyasblkdevblk0
-
-dev_mount usbdisk0 /storage/usbdisk0 auto /devices/platform/s5p-ehci
-

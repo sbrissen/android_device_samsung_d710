@@ -417,6 +417,9 @@ on property:persist.service.usb.hubport=14
     chown system system /dev/swmxctl
     chown system system /dev/uwibro	
 	
+#Ugly Hack to fix su/Superuser
+	chgrp u0_a58 /cache/dalvik-cache/system@framework@am.jar@classes.dex
+	
 #SISO Data Call Changes S
 service pppd_cdma /system/bin/pppd_runner
    user root
