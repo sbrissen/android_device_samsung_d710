@@ -12,15 +12,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-DEVICE_PACKAGE_OVERLAYS := device/samsung/epic4gtouch/overlay
+DEVICE_PACKAGE_OVERLAYS := device/samsung/d710/overlay
 		
 # Init files
 PRODUCT_COPY_FILES += \
-	device/samsung/epic4gtouch/lpm.rc:root/lpm.rc \
-	device/samsung/epic4gtouch/init.smdk4210.rc:root/init.smdk4210.rc \
-	device/samsung/epic4gtouch/init.smdk4210.usb.rc:root/init.smdk4210.usb.rc \
-	device/samsung/epic4gtouch/ueventd.rc:root/ueventd.rc \
-	device/samsung/epic4gtouch/ueventd.smdk4210.rc:root/ueventd.smdk4210.rc
+	device/samsung/d710/lpm.rc:root/lpm.rc \
+	device/samsung/d710/init.smdk4210.rc:root/init.smdk4210.rc \
+	device/samsung/d710/init.smdk4210.usb.rc:root/init.smdk4210.usb.rc \
+	device/samsung/d710/ueventd.rc:root/ueventd.rc \
+	device/samsung/d710/ueventd.smdk4210.rc:root/ueventd.smdk4210.rc
 
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
@@ -50,52 +50,52 @@ PRODUCT_COPY_FILES += \
 	
 # Keylayout
 PRODUCT_COPY_FILES += \
-    device/samsung/epic4gtouch/usr/keylayout/AVRCP.kl:system/usr/keylayout/AVRCP.kl \
-    device/samsung/epic4gtouch/usr/keylayout/Generic.kl:system/usr/keylayout/Generic.kl \
-    device/samsung/epic4gtouch/usr/keylayout/max8997-muic.kl:system/usr/keylayout/max8997-muic.kl \
-    device/samsung/epic4gtouch/usr/keylayout/melfas-touchkey.kl:system/usr/keylayout/melfas-touchkey.kl \
-    device/samsung/epic4gtouch/usr/keylayout/qwerty.kl:system/usr/keylayout/qwerty.kl \
-    device/samsung/epic4gtouch/usr/keylayout/samsung-keypad.kl:system/usr/keylayout/samsung-keypad.kl \
-    device/samsung/epic4gtouch/usr/keylayout/sec_key.kl:system/usr/keylayout/sec_key.kl \
-    device/samsung/epic4gtouch/usr/keylayout/sec_touchkey.kl:system/usr/keylayout/sec_touchkey.kl \
-    device/samsung/epic4gtouch/usr/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \
-    device/samsung/epic4gtouch/usr/keylayout/sii9234_rcp.kl:system/usr/keylayout/sii9234_rcp.kl \
-    device/samsung/epic4gtouch/usr/keylayout/Vendor_04e8_Product_7021.kl:system/usr/keylayout/Vendor_04e8_Product_7021.kl \
-    device/samsung/epic4gtouch/usr/keylayout/Vendor_05ac_Product_0239.kl:system/usr/keylayout/Vendor_05ac_Product_0239.kl \
-    device/samsung/epic4gtouch/usr/keylayout/Vendor_22b8_Product_093d.kl:system/usr/keylayout/Vendor_22b8_Product_093d.kl \
-    device/samsung/epic4gtouch/usr/keylayout/Vendor_045e_Product_028e.kl:system/usr/keylayout/Vendor_045e_Product_028e.kl \
-    device/samsung/epic4gtouch/usr/keylayout/Vendor_046d_Product_c216.kl:system/usr/keylayout/Vendor_046d_Product_c216.kl \
-    device/samsung/epic4gtouch/usr/keylayout/Vendor_046d_Product_c294.kl:system/usr/keylayout/Vendor_046d_Product_c294.kl \
-    device/samsung/epic4gtouch/usr/keylayout/Vendor_046d_Product_c299.kl:system/usr/keylayout/Vendor_046d_Product_c299.kl \
-    device/samsung/epic4gtouch/usr/keylayout/Vendor_046d_Product_c532.kl:system/usr/keylayout/Vendor_046d_Product_c532.kl \
-    device/samsung/epic4gtouch/usr/keylayout/Vendor_054c_Product_0268.kl:system/usr/keylayout/Vendor_054c_Product_0268.kl
+    device/samsung/d710/usr/keylayout/AVRCP.kl:system/usr/keylayout/AVRCP.kl \
+    device/samsung/d710/usr/keylayout/Generic.kl:system/usr/keylayout/Generic.kl \
+    device/samsung/d710/usr/keylayout/max8997-muic.kl:system/usr/keylayout/max8997-muic.kl \
+    device/samsung/d710/usr/keylayout/melfas-touchkey.kl:system/usr/keylayout/melfas-touchkey.kl \
+    device/samsung/d710/usr/keylayout/qwerty.kl:system/usr/keylayout/qwerty.kl \
+    device/samsung/d710/usr/keylayout/samsung-keypad.kl:system/usr/keylayout/samsung-keypad.kl \
+    device/samsung/d710/usr/keylayout/sec_key.kl:system/usr/keylayout/sec_key.kl \
+    device/samsung/d710/usr/keylayout/sec_touchkey.kl:system/usr/keylayout/sec_touchkey.kl \
+    device/samsung/d710/usr/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \
+    device/samsung/d710/usr/keylayout/sii9234_rcp.kl:system/usr/keylayout/sii9234_rcp.kl \
+    device/samsung/d710/usr/keylayout/Vendor_04e8_Product_7021.kl:system/usr/keylayout/Vendor_04e8_Product_7021.kl \
+    device/samsung/d710/usr/keylayout/Vendor_05ac_Product_0239.kl:system/usr/keylayout/Vendor_05ac_Product_0239.kl \
+    device/samsung/d710/usr/keylayout/Vendor_22b8_Product_093d.kl:system/usr/keylayout/Vendor_22b8_Product_093d.kl \
+    device/samsung/d710/usr/keylayout/Vendor_045e_Product_028e.kl:system/usr/keylayout/Vendor_045e_Product_028e.kl \
+    device/samsung/d710/usr/keylayout/Vendor_046d_Product_c216.kl:system/usr/keylayout/Vendor_046d_Product_c216.kl \
+    device/samsung/d710/usr/keylayout/Vendor_046d_Product_c294.kl:system/usr/keylayout/Vendor_046d_Product_c294.kl \
+    device/samsung/d710/usr/keylayout/Vendor_046d_Product_c299.kl:system/usr/keylayout/Vendor_046d_Product_c299.kl \
+    device/samsung/d710/usr/keylayout/Vendor_046d_Product_c532.kl:system/usr/keylayout/Vendor_046d_Product_c532.kl \
+    device/samsung/d710/usr/keylayout/Vendor_054c_Product_0268.kl:system/usr/keylayout/Vendor_054c_Product_0268.kl
 	
 # Keychars
 PRODUCT_COPY_FILES += \
-   device/samsung/epic4gtouch/usr/keychars/Generic.kcm:system/usr/keychars/Generic.kcm \
-   device/samsung/epic4gtouch/usr/keychars/qwerty.kcm:system/usr/keychars/qwerty.kcm \
-   device/samsung/epic4gtouch/usr/keychars/qwerty2.kcm:system/usr/keychars/qwerty2.kcm \
-   device/samsung/epic4gtouch/usr/keychars/Virtual.kcm:system/usr/keychars/Virtual.kcm
+   device/samsung/d710/usr/keychars/Generic.kcm:system/usr/keychars/Generic.kcm \
+   device/samsung/d710/usr/keychars/qwerty.kcm:system/usr/keychars/qwerty.kcm \
+   device/samsung/d710/usr/keychars/qwerty2.kcm:system/usr/keychars/qwerty2.kcm \
+   device/samsung/d710/usr/keychars/Virtual.kcm:system/usr/keychars/Virtual.kcm
 
 #idc
 PRODUCT_COPY_FILES += \
-   device/samsung/epic4gtouch/usr/idc/melfas_ts.idc:system/usr/idc/melfas_ts.idc \
-   device/samsung/epic4gtouch/usr/idc/mxt224_ts_input.idc:system/usr/idc/mxt224_ts_input.idc \
-   device/samsung/epic4gtouch/usr/idc/qwerty.idc:system/usr/idc/qwerty.idc \
-   device/samsung/epic4gtouch/usr/idc/qwerty2.idc:system/usr/idc/qwerty2.idc \
-   device/samsung/epic4gtouch/usr/idc/sec_touchscreen.idc:system/usr/idc/sec_touchscreen.idc 
+   device/samsung/d710/usr/idc/melfas_ts.idc:system/usr/idc/melfas_ts.idc \
+   device/samsung/d710/usr/idc/mxt224_ts_input.idc:system/usr/idc/mxt224_ts_input.idc \
+   device/samsung/d710/usr/idc/qwerty.idc:system/usr/idc/qwerty.idc \
+   device/samsung/d710/usr/idc/qwerty2.idc:system/usr/idc/qwerty2.idc \
+   device/samsung/d710/usr/idc/sec_touchscreen.idc:system/usr/idc/sec_touchscreen.idc 
 
 # Audio
 PRODUCT_COPY_FILES += \
-	device/samsung/epic4gtouch/configs/asound.conf:system/etc/asound.conf
+	device/samsung/d710/configs/asound.conf:system/etc/asound.conf
     	
 # Misc	
 PRODUCT_COPY_FILES += \
-	device/samsung/epic4gtouch/configs/apns-conf.xml:system/etc/apns-conf.xml
+	device/samsung/d710/configs/apns-conf.xml:system/etc/apns-conf.xml
 	
 # gps
 PRODUCT_COPY_FILES += \
-  device/samsung/epic4gtouch/gpsfix:system/bin/gpsfix
+  device/samsung/d710/gpsfix:system/bin/gpsfix
 	
 # Bluetooth configuration files
 PRODUCT_COPY_FILES += \
@@ -103,7 +103,7 @@ PRODUCT_COPY_FILES += \
 	
 # Vold
 PRODUCT_COPY_FILES += \
-	device/samsung/epic4gtouch/configs/vold.fstab:system/etc/vold.fstab 
+	device/samsung/d710/configs/vold.fstab:system/etc/vold.fstab 
 
 # The OpenGL ES API level that is natively supported by this device.
 # This is a 16.16 fixed point number
@@ -115,7 +115,7 @@ PRODUCT_PROPERTY_OVERRIDES := \
 # be reachable from resources or other mechanisms.
 PRODUCT_PROPERTY_OVERRIDES += \
        wifi.interface=wlan0 \
-       wifi.supplicant_scan_interval=15 \
+       wifi.supplicant_scan_interval=240 \
        ro.telephony.sends_barcount=1 \
        ro.ril.def.agps.mode=2 \
        ro.telephony.call_ring.multiple=false \
@@ -150,8 +150,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	
 # Gps
 PRODUCT_COPY_FILES += \
-	device/samsung/epic4gtouch/configs/gps.conf:system/etc/gps.conf \
-	device/samsung/epic4gtouch/configs/sirfgps.conf:system/etc/sirfgps.conf
+	device/samsung/d710/configs/gps.conf:system/etc/gps.conf \
+	device/samsung/d710/configs/sirfgps.conf:system/etc/sirfgps.conf
 
 # Packages
 PRODUCT_PACKAGES := \
@@ -162,9 +162,9 @@ PRODUCT_PACKAGES := \
 	GalaxyS2Settings \
 	SamsungServiceMode \
 	libsurfaceflinger_client \
-	Torch
-	#su \
-	#Superuser
+	Torch \
+	su \
+	Superuser
 	
 # Camera
 PRODUCT_PACKAGES += \
@@ -172,8 +172,8 @@ PRODUCT_PACKAGES += \
 	libs5pjpeg
 	
 PRODUCT_COPY_FILES += \
-	device/samsung/epic4gtouch/configs/media_profiles.xml:system/etc/media_profiles.xml \
-	device/samsung/epic4gtouch/configs/media_codecs.xml:system/etc/media_codecs.xml
+	device/samsung/d710/configs/media_profiles.xml:system/etc/media_profiles.xml \
+	device/samsung/d710/configs/media_codecs.xml:system/etc/media_codecs.xml
 	
 # Charger
 PRODUCT_PACKAGES += \
@@ -200,25 +200,9 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.wimax.interface=uwbr0 \
-    net.tcp.buffersize.wimax=4096,524288,1048576,4096,16384,110208 \
+    net.tcp.buffersize.wimax=4096,87380,256960,4096,16384,256960 \
 	persist.service.usb.hubport=4
 	
-# T-Mobile theme engine
-PRODUCT_PACKAGES += \
-       ThemeManager \
-       ThemeChooser \
-       com.tmobile.themes
-
-PRODUCT_COPY_FILES += \
-       device/samsung/epic4gtouch/configs/com.tmobile.software.themes.xml:system/etc/permissions/com.tmobile.software.themes.xml
-	
-# TV OUT
-#PRODUCT_PACKAGES += \
-#	libhdmiclient
-#	libcec \
-#	libddc \
-#	libedid
-
 # MFC API
 PRODUCT_PACKAGES += \
     libsecmfcapi
@@ -226,10 +210,9 @@ PRODUCT_PACKAGES += \
 # Include exynos4 platform specific parts
 TARGET_HAL_PATH := hardware/samsung/exynos4/hal
 TARGET_OMX_PATH := hardware/samsung/exynos/multimedia/openmax
-$(call inherit-product, hardware/samsung/exynos4210.mk)
 
 PRODUCT_COPY_FILES += \
-	device/samsung/epic4gtouch/configs/secomxregistry:system/etc/secomxregistry
+	device/samsung/d710/configs/secomxregistry:system/etc/secomxregistry
 
 PRODUCT_PACKAGES += \
     libstagefrighthw \
@@ -269,6 +252,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # we have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
 
+# enable repeatable keys in cwm
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.cwm.enable_key_repeat=true
+
 # Screen density is actually considered a locale (since it is taken into account
 # the the build-time selection of resources). The product definitions including
 # this file must pay attention to the fact that the first entry in the final
@@ -286,5 +273,6 @@ $(call inherit-product, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)
 # commonly available
 
 $(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4330/device-bcm.mk)
-$(call inherit-product-if-exists, vendor/samsung/epic4gtouch/epic4gtouch-vendor.mk)
+$(call inherit-product-if-exists, vendor/samsung/d710/d710-vendor.mk)
+$(call inherit-product-if-exists, vendor/common/common.mk)
 $(call inherit-product, hardware/samsung/exynos4210.mk)

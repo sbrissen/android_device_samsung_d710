@@ -58,7 +58,6 @@ on fs
 on post-fs-data
 # insmod kernel modules
     insmod /system/lib/modules/j4fs.ko
-    insmod /system/lib/modules/Si4709_driver.ko
     
 # mount param.lfs
     mount j4fs /dev/block/mmcblk0p4 /mnt/.lfs
@@ -191,6 +190,10 @@ on post-fs-data
     chown system radio /sys/devices/platform/sec-battery/power_supply/battery/batt_vfocv
     chown system radio /sys/devices/platform/sec-battery/power_supply/battery/batt_soc
     chown system radio /sys/devices/platform/sec-battery/power_supply/battery/batt_vol
+    chown system radio /sys/devices/platform/sec-battery/power_supply/battery/hotspot
+    chown system radio /sys/devices/platform/sec-battery/power_supply/battery/data_call
+    chown system radio /sys/devices/platform/sec-battery/power_supply/battery/call
+    chown system radio /sys/devices/platform/sec-battery/power_supply/battery/wimax
 
     chown system system /sys/class/backlight/panel/brightness
     chown system system /sys/class/power_supply/battery/temp
@@ -416,9 +419,6 @@ on property:persist.service.usb.hubport=14
     chmod 660 /dev/uwibro
     chown system system /dev/swmxctl
     chown system system /dev/uwibro	
-	
-#Ugly Hack to fix su/Superuser
-	chgrp u0_a58 /cache/dalvik-cache/system@framework@am.jar@classes.dex
 	
 #SISO Data Call Changes S
 service pppd_cdma /system/bin/pppd_runner

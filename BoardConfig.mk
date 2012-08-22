@@ -43,14 +43,14 @@ endif
 TARGET_BOARD_PLATFORM := exynos4
 TARGET_SOC := exynos4210
 TARGET_BOOTLOADER_BOARD_NAME := smdk4210
-TARGET_BOARD_INFO_FILE := device/samsung/epic4gtouch/board-info.txt
+TARGET_BOARD_INFO_FILE := device/samsung/d710/board-info.txt
 
 TARGET_NO_BOOTLOADER := true
 TARGET_NO_RADIOIMAGE := true
 
 TARGET_PROVIDES_INIT := true
 TARGET_PROVIDES_INIT_TARGET_RC := true
-TARGET_RECOVERY_INITRC := device/samsung/epic4gtouch/recovery.rc
+TARGET_RECOVERY_INITRC := device/samsung/d710/recovery.rc
 
 BOARD_NAND_PAGE_SIZE := 4096
 BOARD_NAND_SPARE_SIZE := 128
@@ -59,7 +59,6 @@ BOARD_KERNEL_BASE := 0x40000000
 BOARD_KERNEL_CMDLINE := console=ttySAC2,115200 consoleblank=0
 
 # Kernel Config
-TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-4.4.3
 TARGET_KERNEL_SOURCE := kernel/samsung/smdk4210
 TARGET_KERNEL_CONFIG := cyanogenmod_d710_defconfig
 
@@ -71,11 +70,11 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE := 2147483648
 BOARD_FLASH_BLOCK_SIZE := 4096
 
 # Releasetools
-TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := ./device/samsung/epic4gtouch/releasetools/epic4gtouch_ota_from_target_files
-TARGET_RELEASETOOL_IMG_FROM_TARGET_SCRIPT := ./device/samsung/epic4gtouch/releasetools/epic4gtouch_img_from_target_files
+TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := ./device/samsung/d710/releasetools/d710_ota_from_target_files
+TARGET_RELEASETOOL_IMG_FROM_TARGET_SCRIPT := ./device/samsung/d710/releasetools/d710_img_from_target_files
 
 # Graphics
-BOARD_EGL_CFG := device/samsung/epic4gtouch/configs/egl.cfg
+BOARD_EGL_CFG := device/samsung/d710/configs/egl.cfg
 USE_OPENGL_RENDERER := true
 EGL_ALWAYS_ASYNC := true
 
@@ -85,7 +84,7 @@ ENABLE_WEBGL := true
 # Charging mode
 BOARD_CHARGING_MODE_BOOTING_LPM := /sys/class/power_supply/battery/batt_lp_charging
 BOARD_BATTERY_DEVICE_NAME := "battery"
-BOARD_CHARGER_RES := device/samsung/epic4gtouch/res/charger
+BOARD_CHARGER_RES := device/samsung/d710/res/charger
 
 BOARD_SUPPRESS_EMMC_WIPE := true
 
@@ -114,7 +113,7 @@ BOARD_USES_MFC_FPS := true
 # Audio
 BOARD_USE_YAMAHAPLAYER := true
 BOARD_USE_SAMSUNG_SEPARATEDSTREAM := true
-#BOARD_HAS_SAMSUNG_VOLUME_BUG := true
+BOARD_HAS_SAMSUNG_VOLUME_BUG := true
 COMMON_GLOBAL_CFLAGS += -DICS_AUDIO_BLOB
 
 # Camera
@@ -153,15 +152,15 @@ BOARD_VOLD_DISC_HAS_MULTIPLE_MAJORS := true
 TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/platform/s3c-usbgadget/gadget/lun%d/file"
 
 # Recovery
-BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/samsung/epic4gtouch/recovery/recovery_keys.c
-BOARD_CUSTOM_GRAPHICS := ../../../device/samsung/epic4gtouch/recovery/graphics.c
+BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/samsung/d710/recovery/recovery_keys.c
+BOARD_CUSTOM_GRAPHICS := ../../../device/samsung/d710/recovery/graphics.c
 BOARD_UMS_LUNFILE := "/sys/devices/platform/s3c-usbgadget/gadget/lun%d/file"
 TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_USES_MMCUTILS := true
 BOARD_HAS_NO_MISC_PARTITION := true
 BOARD_HAS_NO_SELECT_BUTTON := true
 
-TARGET_SPECIFIC_HEADER_PATH := device/samsung/epic4gtouch/include
+TARGET_SPECIFIC_HEADER_PATH := device/samsung/d710/include
 
 # Nearly all shipped I9100 devices have defective eMMC chips (VYL00M fwrev 0x19)
 # Prevent usage of ERASE commands in recovery on these boards.
@@ -171,9 +170,9 @@ TARGET_SPECIFIC_HEADER_PATH := device/samsung/epic4gtouch/include
 BOARD_SUPPRESS_EMMC_WIPE := true
 
 # assert
-TARGET_OTA_ASSERT_DEVICE := SPH-D710,epic4gtouch
+TARGET_OTA_ASSERT_DEVICE := epic4gtouch,SPH-D710,d710
 
 # Use the non-open-source parts, if they're present
--include vendor/samsung/epic4gtouch/BoardConfigVendor.mk
+-include vendor/samsung/d710/BoardConfigVendor.mk
 
-BOARD_CUSTOM_BOOTIMG_MK := device/samsung/epic4gtouch/shbootimg.mk
+BOARD_CUSTOM_BOOTIMG_MK := device/samsung/d710/shbootimg.mk

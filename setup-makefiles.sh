@@ -14,8 +14,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-DEVICE=epic4gtouch
-COMMON=c1-common
+DEVICE=d710
+COMMON=d710
 MANUFACTURER=samsung
 
 mkdir -p ../../../vendor/$MANUFACTURER/$DEVICE
