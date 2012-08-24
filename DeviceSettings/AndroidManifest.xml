@@ -24,6 +24,7 @@
         </receiver>
       
         <activity android:name=".mDNIeFragmentActivity" />
+        <activity android:name=".ScreenFragmentActivity" />
         
     </application>
 </manifest>
