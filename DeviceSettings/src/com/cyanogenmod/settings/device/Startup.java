@@ -30,17 +30,9 @@ public class Startup extends BroadcastReceiver {
         mDNIeMode.restore(context);
         mDNIeNegative.restore(context);
         mDNIeOutdoor.restore(context);
-<<<<<<< HEAD
-        HapticFragmentActivity.restore(context);
-        VibratorIntensity.restore(context);
-        SensorsFragmentActivity.restore(context);
-        TouchkeyTimeout.restore(context);
-=======
-        RadioFragmentActivity.restore(context);
         ScreenFragmentActivity.restore(context);
         SensorsFragmentActivity.restore(context);
         TouchkeyTimeout.restore(context);
         VibratorIntensity.restore(context);
->>>>>>> ba346b4... settings: restore ScreenFragmentActivity
     }
 }
