@@ -12,14 +12,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-DEVICE_PACKAGE_OVERLAYS := device/samsung/d710/overlay
+DEVICE_PACKAGE_OVERLAYS := device/samsung/d710/overlay \
+    device/samsung/galaxys2-common/overlay
 		
 # Init files
 PRODUCT_COPY_FILES += \
-	device/samsung/d710/lpm.rc:root/lpm.rc \
+	device/samsung/galaxys2-common/lpm.rc:root/lpm.rc \
 	device/samsung/d710/init.smdk4210.rc:root/init.smdk4210.rc \
-	device/samsung/d710/init.smdk4210.usb.rc:root/init.smdk4210.usb.rc \
-	device/samsung/d710/ueventd.rc:root/ueventd.rc \
+	device/samsung/galaxys2-common/init.smdk4210.usb.rc:root/init.smdk4210.usb.rc \
 	device/samsung/d710/ueventd.smdk4210.rc:root/ueventd.smdk4210.rc
 
 # These are the hardware-specific features
@@ -87,7 +87,7 @@ PRODUCT_COPY_FILES += \
 
 # Audio
 PRODUCT_COPY_FILES += \
-	device/samsung/d710/configs/asound.conf:system/etc/asound.conf
+	device/samsung/galaxys2-common/configs/asound.conf:system/etc/asound.conf
     	
 # Misc	
 PRODUCT_COPY_FILES += \
@@ -120,9 +120,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
        ro.ril.def.agps.mode=2 \
        ro.telephony.call_ring.multiple=false \
        ro.telephony.call_ring.delay=3000 \
-       ro.telephony.ril.v3=datacall \
-	   hwui.render_dirty_regions=false \
-	   hwui.disable_vsync=true
+	   hwui.render_dirty_regions=false
 
 PRODUCT_PROPERTY_OVERRIDES += \
        persist.sys.vold.switchexternal=1 \
@@ -132,7 +130,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	   
 # Telephony property for CDMA
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.config.vc_call_vol_steps=15 \
+    ro.config.vc_call_vol_steps=14 \
     ro.telephony.default_network=4 \
     ro.com.google.clientidbase=android-sprint-us \
     ro.cdma.home.operator.numeric=310120 \
@@ -161,19 +159,15 @@ PRODUCT_PACKAGES := \
 	smdk4210_hdcp_keys \
 	GalaxyS2Settings \
 	SamsungServiceMode \
-	libsurfaceflinger_client \
-	Torch \
-	su \
-	Superuser
+	libsurfaceflinger_client
 	
 # Camera
 PRODUCT_PACKAGES += \
-	camera.exynos4 \
-	libs5pjpeg
+	camera.exynos4
 	
 PRODUCT_COPY_FILES += \
-	device/samsung/d710/configs/media_profiles.xml:system/etc/media_profiles.xml \
-	device/samsung/d710/configs/media_codecs.xml:system/etc/media_codecs.xml
+	device/samsung/galaxys2-common/configs/media_profiles.xml:system/etc/media_profiles.xml \
+	device/samsung/galaxys2-common/configs/media_codecs.xml:system/etc/media_codecs.xml
 	
 # Charger
 PRODUCT_PACKAGES += \
@@ -200,7 +194,6 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.wimax.interface=uwbr0 \
-    net.tcp.buffersize.wimax=4096,87380,256960,4096,16384,256960 \
 	persist.service.usb.hubport=4
 	
 # MFC API
@@ -267,12 +260,8 @@ PRODUCT_LOCALES += hdpi
 
 $(call inherit-product, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)
 
-# See comment at the top of this file. This is where the other
-# half of the device-specific product definition file takes care
-# of the aspects that require proprietary drivers that aren't
-# commonly available
-
 $(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4330/device-bcm.mk)
+$(call inherit-product-if-exists, vendor/samsung/galaxys2-common/common-vendor.mk)
 $(call inherit-product-if-exists, vendor/samsung/d710/d710-vendor.mk)
 $(call inherit-product-if-exists, vendor/common/common.mk)
 $(call inherit-product, hardware/samsung/exynos4210.mk)

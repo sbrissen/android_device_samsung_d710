@@ -355,7 +355,7 @@ on boot
     setprop status.battery.level_raw  50
     setprop status.battery.level_scale 9
 	
-    setprop net.tcp.buffersize.wimax   4096,524288,1048576,4096,16384,110208
+    setprop net.tcp.buffersize.wimax   4096,87380,256960,4096,16384,256960
 	
 # +++++++++++++++++++++++++++++++++++++++++++
 # for datarouter

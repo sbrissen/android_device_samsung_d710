@@ -17,9 +17,6 @@
 <!-- Tuna-specific phone app resources. -->
 <resources>
 
-    <!-- Flag indicating if the tty is enabled -->
-    <bool name="tty_enabled">false</bool>
-	
 	    <!-- Sprint Message Wait Indicator Quirk
          If true, message wait indicators are hidden by default on this device
          unless the user enables it in Call Settings.  This quirk is necessary

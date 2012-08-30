@@ -50,7 +50,7 @@ TARGET_NO_RADIOIMAGE := true
 
 TARGET_PROVIDES_INIT := true
 TARGET_PROVIDES_INIT_TARGET_RC := true
-TARGET_RECOVERY_INITRC := device/samsung/d710/recovery.rc
+TARGET_RECOVERY_INITRC := device/samsung/galaxys2-common/recovery.rc
 
 BOARD_NAND_PAGE_SIZE := 4096
 BOARD_NAND_SPARE_SIZE := 128
@@ -70,11 +70,11 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE := 2147483648
 BOARD_FLASH_BLOCK_SIZE := 4096
 
 # Releasetools
-TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := ./device/samsung/d710/releasetools/d710_ota_from_target_files
-TARGET_RELEASETOOL_IMG_FROM_TARGET_SCRIPT := ./device/samsung/d710/releasetools/d710_img_from_target_files
+TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := ./device/samsung/galaxys2-common/releasetools/galaxys2_ota_from_target_files
+TARGET_RELEASETOOL_IMG_FROM_TARGET_SCRIPT := ./device/samsung/galaxys2-common/releasetools/galaxys2_img_from_target_files
 
 # Graphics
-BOARD_EGL_CFG := device/samsung/d710/configs/egl.cfg
+BOARD_EGL_CFG := device/samsung/galaxys2-common/configs/egl.cfg
 USE_OPENGL_RENDERER := true
 EGL_ALWAYS_ASYNC := true
 
@@ -84,7 +84,7 @@ ENABLE_WEBGL := true
 # Charging mode
 BOARD_CHARGING_MODE_BOOTING_LPM := /sys/class/power_supply/battery/batt_lp_charging
 BOARD_BATTERY_DEVICE_NAME := "battery"
-BOARD_CHARGER_RES := device/samsung/d710/res/charger
+BOARD_CHARGER_RES := device/samsung/galaxys2-common/res/charger
 
 BOARD_SUPPRESS_EMMC_WIPE := true
 
@@ -98,9 +98,8 @@ BOARD_USES_FIMGAPI := true
 BOARD_SAMSUNG_TVOUT := true
 BOARD_HDMI_DDC_CH := DDC_CH_I2C_7
 BOARD_USES_PROPRIETARY_LIBFIMC := true
-
-BOARD_HAL_PATH := hardware/samsung/exynos4/hal
-BOARD_MM_PATH := hardware/samsung/exynos/multimedia
+#BOARD_HAVE_HDMI_SUPPORT := SAMSUNG_HDMI_SUPPORT
+#BOARD_USES_SAMSUNG_HDMI := true
 
 # OMX
 BOARD_HAVE_CODEC_SUPPORT := SAMSUNG_CODEC_SUPPORT
@@ -153,7 +152,7 @@ TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/platform/s3c-usbgadget/gadget/l
 
 # Recovery
 BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/samsung/d710/recovery/recovery_keys.c
-BOARD_CUSTOM_GRAPHICS := ../../../device/samsung/d710/recovery/graphics.c
+BOARD_CUSTOM_GRAPHICS := ../../../device/samsung/galaxys2-common/recovery/graphics.c
 BOARD_UMS_LUNFILE := "/sys/devices/platform/s3c-usbgadget/gadget/lun%d/file"
 TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_USES_MMCUTILS := true
