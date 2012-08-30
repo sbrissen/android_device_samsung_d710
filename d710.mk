@@ -199,7 +199,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # MFC API
 PRODUCT_PACKAGES += \
     libsecmfcapi
-
+	
 # Include exynos4 platform specific parts
 TARGET_HAL_PATH := hardware/samsung/exynos4/hal
 TARGET_OMX_PATH := hardware/samsung/exynos/multimedia/openmax
