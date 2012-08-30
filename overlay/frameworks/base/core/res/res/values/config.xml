@@ -171,6 +171,12 @@
 
     <!-- Minimum screen brightness allowed by the power manager. -->
     <integer name="config_screenBrightnessDim">29</integer>
+	
+    <!-- Package name providing network location support. -->
+    <string name="config_networkLocationProviderPackageName" translatable="false">com.google.android.location</string>
+
+    <!-- Package name providing geocoder API support. -->
+    <string name="config_geocodeProviderPackageName" translatable="false">com.google.android.location</string>
 
     <!-- XXXXX NOTE THE FOLLOWING RESOURCES USE THE WRONG NAMING CONVENTION.
          Please don't copy them, copy anything else. -->
