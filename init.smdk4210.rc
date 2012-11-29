@@ -4,10 +4,9 @@ import init.gps.rc
 on early-init
     export EXTERNAL_STORAGE /storage/sdcard0
     export SECONDARY_STORAGE /storage/sdcard1
-    mkdir /storage 0775 system system
-    mkdir /storage/sdcard0 0775 system system
-    mkdir /storage/sdcard1 0775 system system
-    mkdir /storage/usbdisk0 0775 system system
+    mkdir /storage/sdcard0 0775 root root
+    mkdir /storage/sdcard1 0775 root root
+    mkdir /storage/usbdisk0 0775 root root
     mkdir /efs 0771 radio system
     mkdir /preload 0771 system system
 	mkdir /mnt 0775 root system
@@ -82,6 +81,10 @@ on post-fs-data
     mkdir /data/misc/dhcp 0770 dhcp dhcp
     chown dhcp dhcp /data/misc/dhcp
 	
+	mkdir /data/snd 0777 audio audio
+	chmod 0777 /data/snd
+	chown audio audio /data/snd
+	
 #DRM directory creation
     mkdir /system/etc/security/.drm 0775
     chown root root /system/etc/security/.drm
@@ -148,6 +151,10 @@ on post-fs-data
 
     chmod 0775 /data/log
     chmod 0775 /data/anr
+	
+	mkdir /data/snd 0775 system system
+	chown system system /data/snd
+	chmod 0755 /data/snd
 
 #panorama directory creation
     mkdir /data/pxtmpdir 0775
@@ -241,12 +248,12 @@ on post-fs-data
 
 # Permissions for bluetooth
     setprop ro.bt.bdaddr_path "/efs/bluetooth/bt_addr"
-    chown bluetooth bluetooth ro.bt.bdaddr_path
-    chown bluetooth bluetooth /dev/ttySAC0
+    chown bluetooth net_bt_stack ro.bt.bdaddr_path
+    chown bluetooth net_bt_stack /dev/ttySAC0
     chmod 0600 /dev/ttySAC0
     chmod 0660 /sys/class/rfkill/rfkill0/state
-    chown bluetooth bluetooth /sys/class/rfkill/rfkill0/state
-    chown bluetooth bluetooth /sys/class/rfkill/rfkill0/type
+    chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/state
+    chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/type
 
 # Vibetonz
     chmod 0660 /dev/tspdrv
@@ -471,31 +478,25 @@ service iprenew_uwbr0 /system/bin/dhcpcd -n
 	
 service gpsd /system/bin/gpsd
     class main
-    user gps
+    user system
     group system inet
-	
-service gpsfix /system/bin/gpsfix
-    class main
-    user root
-    group root
-    oneshot
 
 # for bluetooth
-service hciattach /system/bin/brcm_patchram_plus --enable_hci --enable_lpm --no2bytes --tosleep 50000 \
-    --baudrate 3000000 --use_baudrate_for_download --patchram /system/bin/bcm4330B1.hcd \
-    --scopcm=0,0,0,0,0,0,0,3,3,0  /dev/ttySAC0
-    class main
-    user bluetooth
-    group bluetooth net_bt_admin
-    disabled
-    oneshot
+#service hciattach /system/bin/brcm_patchram_plus --enable_hci --enable_lpm --no2bytes --tosleep 50000 \
+#    --baudrate 3000000 --use_baudrate_for_download --patchram /system/bin/bcm4330B1.hcd \
+#    --scopcm=0,0,0,0,0,0,0,3,3,0  /dev/ttySAC0
+#    class main
+#    user bluetooth
+#    group bluetooth net_bt_admin
+#    disabled
+#    oneshot
 
 # bluetooth mac address
-service bdaddr /system/bin/bdaddr_read
-    class main
-    user root
-    disabled
-    oneshot
+#service bdaddr /system/bin/bdaddr_read
+#    class main
+#    user root
+#    disabled
+#    oneshot
 
 # TVout
 service TvoutService_C /system/bin/bintvoutservice
@@ -509,6 +510,3 @@ service bugreport /system/bin/bugmailer.sh -v
     disabled
     oneshot
     keycodes 114 115 116
-
-on property:sys.boot_completed=1
-	chmod 660 /data/gps/secgpsd.socket

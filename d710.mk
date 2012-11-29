@@ -19,7 +19,7 @@ DEVICE_PACKAGE_OVERLAYS := device/samsung/d710/overlay \
 PRODUCT_COPY_FILES += \
 	device/samsung/galaxys2-common/lpm.rc:root/lpm.rc \
 	device/samsung/d710/init.smdk4210.rc:root/init.smdk4210.rc \
-	device/samsung/galaxys2-common/init.smdk4210.usb.rc:root/init.smdk4210.usb.rc \
+	device/samsung/d710/init.smdk4210.usb.rc:root/init.smdk4210.usb.rc \
 	device/samsung/d710/ueventd.smdk4210.rc:root/ueventd.smdk4210.rc
 
 # These are the hardware-specific features
@@ -87,19 +87,13 @@ PRODUCT_COPY_FILES += \
 
 # Audio
 PRODUCT_COPY_FILES += \
-	device/samsung/galaxys2-common/configs/asound.conf:system/etc/asound.conf
+	device/samsung/galaxys2-common/configs/asound.conf:system/etc/asound.conf \
+	device/samsung/d710/configs/Volume.db:system/etc/Volume.db
     	
 # Misc	
 PRODUCT_COPY_FILES += \
-	device/samsung/d710/configs/apns-conf.xml:system/etc/apns-conf.xml
-	
-# gps
-PRODUCT_COPY_FILES += \
-  device/samsung/d710/gpsfix:system/bin/gpsfix
-	
-# Bluetooth configuration files
-PRODUCT_COPY_FILES += \
-	system/bluetooth/data/main.le.conf:system/etc/bluetooth/main.conf
+	device/samsung/d710/configs/apns-conf.xml:system/etc/apns-conf.xml \
+	device/samsung/d710/configs/ip-up:system/etc/ppp/ip-up
 	
 # Vold
 PRODUCT_COPY_FILES += \
@@ -130,7 +124,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	   
 # Telephony property for CDMA
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.config.vc_call_vol_steps=14 \
+    ro.config.vc_call_vol_steps=7 \
     ro.telephony.default_network=4 \
     ro.com.google.clientidbase=android-sprint-us \
     ro.cdma.home.operator.numeric=310120 \
@@ -159,7 +153,10 @@ PRODUCT_PACKAGES := \
 	smdk4210_hdcp_keys \
 	GalaxyS2Settings \
 	SamsungServiceMode \
-	libsurfaceflinger_client
+	libsurfaceflinger_client \
+	libnetcmdiface \
+	su \
+	SuperUser
 	
 # Camera
 PRODUCT_PACKAGES += \
@@ -200,8 +197,15 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PACKAGES += \
     libsecmfcapi
 	
+# HWCOMPOSER TESTING
+#PRODUCT_PACKAGES += \
+#    libexynosutils \
+#	hwcomposer.exynos4 \
+#	libfimc \
+#	libhdmi	
+
 # Include exynos4 platform specific parts
-TARGET_HAL_PATH := hardware/samsung/exynos4/hal
+TARGET_HAL_PATH := hardware/samsung/exynos4
 TARGET_OMX_PATH := hardware/samsung/exynos/multimedia/openmax
 
 PRODUCT_COPY_FILES += \
@@ -226,7 +230,8 @@ PRODUCT_PACKAGES += \
     libOMX.SEC.MP3.Decoder \
 	libhwconverter \
 	libs5pjpeg \
-	libfimg
+	libfimg \
+	libsync
 
 # enable Google-specific location features,
 # like NetworkLocationProvider and LocationCollector
