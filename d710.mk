@@ -20,7 +20,8 @@ PRODUCT_COPY_FILES += \
 	device/samsung/galaxys2-common/lpm.rc:root/lpm.rc \
 	device/samsung/d710/init.smdk4210.rc:root/init.smdk4210.rc \
 	device/samsung/d710/init.smdk4210.usb.rc:root/init.smdk4210.usb.rc \
-	device/samsung/d710/ueventd.smdk4210.rc:root/ueventd.smdk4210.rc
+	device/samsung/d710/ueventd.smdk4210.rc:root/ueventd.smdk4210.rc \
+	device/samsung/d710/init.smdk4210.usb.rc:recovery/root/usb.rc \
 
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
@@ -155,6 +156,7 @@ PRODUCT_PACKAGES := \
 	SamsungServiceMode \
 	libsurfaceflinger_client \
 	libnetcmdiface \
+	Torch \
 	su \
 	SuperUser
 	
@@ -198,15 +200,14 @@ PRODUCT_PACKAGES += \
     libsecmfcapi
 	
 # HWCOMPOSER TESTING
-#PRODUCT_PACKAGES += \
-#    libexynosutils \
-#	hwcomposer.exynos4 \
-#	libfimc \
-#	libhdmi	
+PRODUCT_PACKAGES += \
+    gralloc.exynos4 \
+	hwcomposer.exynos4
 
 # Include exynos4 platform specific parts
-TARGET_HAL_PATH := hardware/samsung/exynos4
+TARGET_HAL_PATH := hardware/samsung/exynos4/hal
 TARGET_OMX_PATH := hardware/samsung/exynos/multimedia/openmax
+$(call inherit-product, hardware/samsung/exynos4210.mk)
 
 PRODUCT_COPY_FILES += \
 	device/samsung/d710/configs/secomxregistry:system/etc/secomxregistry
@@ -269,4 +270,3 @@ $(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4330
 $(call inherit-product-if-exists, vendor/samsung/galaxys2-common/common-vendor.mk)
 $(call inherit-product-if-exists, vendor/samsung/d710/d710-vendor.mk)
 $(call inherit-product-if-exists, vendor/common/common.mk)
-$(call inherit-product, hardware/samsung/exynos4210.mk)

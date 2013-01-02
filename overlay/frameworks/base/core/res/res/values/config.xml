@@ -259,6 +259,8 @@
     <!-- If this value is true, we handle Samsung CDMA's message ID method -->
     <bool name="config_smsSamsungCdmaAlternateMessageIDEncoding">true</bool>
 
+    <!-- If true, adds support for no delay A2DP in Samsung devices -->
+    <!--<bool name="config_noDelayInATwoDP">true</bool> -->
 </resources>
 
 
